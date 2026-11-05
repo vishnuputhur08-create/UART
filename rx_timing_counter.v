@@ -3,7 +3,8 @@ module rx_timing_counter(
     input rst_ni,
     input start_bit_i,
     input [5:0] prescale_i,
-    input data_done_i,
+    input frame_done_i,
+    input abort_i,
     output reg sample_tick_o
 );
 
@@ -20,7 +21,7 @@ always @(posedge clk_i or negedge rst_ni) begin
     end
     else begin
         sample_tick_o <= 0;
-        if(data_done_i) begin
+        if(frame_done_i || abort_i) begin
             count <= 0;
             counting <= 0;
             first_sample <= 0;

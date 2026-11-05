@@ -16,17 +16,21 @@ always @(posedge clk_i or negedge rst_ni) begin
         count <= 0;
         data_done_o <= 0;
     end
-    else if(sample_tick_i && shift_en_i) begin
+    else begin
         data_done_o <= 0;
-        if(count != 3'b7) begin
+
+        if(sample_tick_i && shift_en_i) begin
             data_o <= {rx_sync_i,data_o[7:1]};
-            count <= count + 1;
-        end
-        else if(count == 3'b7) begin
-            data_o <= {rx_sync_i,data_o[7:1]};
-            count <= 0;
-            data_done_o <= 1;
+
+            if(count == 3'b111) begin
+                count <= 0;
+                data_done_o <= 1;
+            end
+            else begin
+                count <= count + 1'b1;
+            end
         end
     end
 end
+
 endmodule

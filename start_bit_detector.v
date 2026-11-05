@@ -1,12 +1,15 @@
-module start_bit_detetor(
+module start_bit_detector(
     input clk_i,
     input rst_ni,
     input rx_in_i,
-    output start_bit_o
+    output start_bit_o,
+    output rx_sync_o
 );
 reg rx_meta;
 reg rx_sync;
 reg rx_prev;
+
+assign rx_sync_o = rx_sync;
 
 always @(posedge clk_i or negedge rst_ni) begin
     if(!rst_ni) begin
