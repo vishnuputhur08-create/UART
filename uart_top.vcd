@@ -1,0 +1,1791 @@
+$date
+	Thu Nov  5 16:51:24 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module uart_tb $end
+$var wire 1 ! tx_b $end
+$var wire 1 " tx_a $end
+$var wire 1 # rx_valid_b $end
+$var wire 1 $ rx_valid_a $end
+$var wire 8 % rx_data_b [7:0] $end
+$var wire 8 & rx_data_a [7:0] $end
+$var reg 1 ' par_en_i $end
+$var reg 1 ( par_typ_i $end
+$var reg 6 ) prescale_i [5:0] $end
+$var reg 1 * rst_ni $end
+$var reg 1 + rx_clk_i $end
+$var reg 1 , tx_clk_i $end
+$var reg 8 - tx_data_a [7:0] $end
+$var reg 8 . tx_data_b [7:0] $end
+$var reg 1 / tx_valid_a $end
+$var reg 1 0 tx_valid_b $end
+$scope module uart_a $end
+$var wire 1 ' par_en_i $end
+$var wire 1 ( par_typ_i $end
+$var wire 6 1 prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 + rx_clk_i $end
+$var wire 1 , tx_clk_i $end
+$var wire 8 2 tx_data_p_i [7:0] $end
+$var wire 1 / tx_data_valid_i $end
+$var wire 1 " tx_data_s_o $end
+$var wire 1 3 tx_busy_o $end
+$var wire 1 4 rx_stop_error $end
+$var wire 1 5 rx_parity_error $end
+$var wire 1 $ rx_data_valid_o $end
+$var wire 1 ! rx_data_s_i $end
+$var wire 8 6 rx_data_p_o [7:0] $end
+$scope module uart_rx_top_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 ' parity_en_i $end
+$var wire 1 ( parity_type_i $end
+$var wire 6 7 prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 4 stop_error_o $end
+$var wire 1 8 start_bit $end
+$var wire 1 9 shift_en $end
+$var wire 1 : sample_tick $end
+$var wire 1 ; rx_sync $end
+$var wire 1 ! rx_in_i $end
+$var wire 1 5 parity_error_o $end
+$var wire 1 < parity_error $end
+$var wire 1 = parity_en $end
+$var wire 1 > parity_done $end
+$var wire 1 ? parity_bit $end
+$var wire 1 @ data_done $end
+$var wire 8 A data [7:0] $end
+$var wire 1 B check_en $end
+$var wire 1 C check_done $end
+$var wire 1 D abort $end
+$var reg 8 E data_o [7:0] $end
+$var reg 1 $ data_valid_o $end
+$scope module data_collector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 9 shift_en_i $end
+$var wire 1 : sample_tick_i $end
+$var wire 1 ; rx_sync_i $end
+$var reg 3 F count [2:0] $end
+$var reg 1 @ data_done_o $end
+$var reg 8 G data_o [7:0] $end
+$upscope $end
+$scope module parity_bit_collector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 : sample_tick_i $end
+$var wire 1 ; rx_sync_i $end
+$var wire 1 = parity_en_i $end
+$var reg 1 ? parity_bit_o $end
+$var reg 1 > parity_done_o $end
+$upscope $end
+$scope module parity_checker_inst $end
+$var wire 8 H data_i [7:0] $end
+$var wire 1 ? parity_bit_i $end
+$var wire 1 < parity_error_o $end
+$var wire 1 ( parity_type_i $end
+$var wire 1 I calculated_parity $end
+$upscope $end
+$scope module rx_controller_inst $end
+$var wire 1 D abort_o $end
+$var wire 1 + clk_i $end
+$var wire 1 @ data_done_i $end
+$var wire 1 > parity_done_i $end
+$var wire 1 ' parity_en_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 8 start_bit_i $end
+$var wire 1 9 shift_en_o $end
+$var wire 1 : sample_tick_i $end
+$var wire 1 ; rx_sync_i $end
+$var wire 1 = parity_en_o $end
+$var wire 1 B check_en_o $end
+$var wire 1 C check_done_i $end
+$var reg 3 J current_state [2:0] $end
+$var reg 3 K next_state [2:0] $end
+$upscope $end
+$scope module rx_timing_counter_inst $end
+$var wire 1 D abort_i $end
+$var wire 1 + clk_i $end
+$var wire 6 L prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 8 start_bit_i $end
+$var wire 1 C frame_done_i $end
+$var reg 6 M count [5:0] $end
+$var reg 1 N counting $end
+$var reg 1 O first_sample $end
+$var reg 1 : sample_tick_o $end
+$upscope $end
+$scope module start_bit_detector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 ; rx_sync_o $end
+$var wire 1 8 start_bit_o $end
+$var wire 1 ! rx_in_i $end
+$var reg 1 P rx_meta $end
+$var reg 1 Q rx_prev $end
+$var reg 1 R rx_sync $end
+$upscope $end
+$scope module stop_bit_checker_inst $end
+$var wire 1 B check_en_i $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 ; rx_sync_i $end
+$var wire 1 : sample_tick_i $end
+$var reg 1 C check_done_o $end
+$var reg 1 4 stop_bit_error_o $end
+$upscope $end
+$upscope $end
+$scope module uart_tx_top_inst $end
+$var wire 1 , clk_i $end
+$var wire 8 S data_i [7:0] $end
+$var wire 1 / data_valid_i $end
+$var wire 1 ' par_en_i $end
+$var wire 1 ( par_typ_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 " tx_out_o $end
+$var wire 1 T ser_en $end
+$var wire 1 U ser_done $end
+$var wire 1 V ser_data $end
+$var wire 1 W parity_bit $end
+$var wire 2 X mux_sel [1:0] $end
+$var wire 1 3 busy_o $end
+$var reg 8 Y data_reg [7:0] $end
+$scope module fsm_controller_inst $end
+$var wire 1 , clk_i $end
+$var wire 1 / data_valid $end
+$var wire 1 ' par_en_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 U ser_done_i $end
+$var reg 1 3 busy_o $end
+$var reg 2 Z mux_sel_o [1:0] $end
+$var reg 3 [ next_state [2:0] $end
+$var reg 1 T ser_en_o $end
+$var reg 3 \ state_reg [2:0] $end
+$upscope $end
+$scope module parity_calc_inst $end
+$var wire 8 ] data_i [7:0] $end
+$var wire 1 ( parity_type $end
+$var wire 1 W parity_o $end
+$upscope $end
+$scope module serializer_inst $end
+$var wire 1 , clk_i $end
+$var wire 8 ^ data_i [7:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 U ser_done_o $end
+$var wire 1 T ser_en_i $end
+$var reg 1 _ active $end
+$var reg 4 ` bit_count [3:0] $end
+$var reg 1 V data_o $end
+$var reg 8 a data_reg [7:0] $end
+$upscope $end
+$scope module uart_mux_inst $end
+$var wire 2 b mux_sel_i [1:0] $end
+$var wire 1 W parity_bit_i $end
+$var wire 1 V ser_data_i $end
+$var wire 1 " tx_out_o $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module uart_b $end
+$var wire 1 ' par_en_i $end
+$var wire 1 ( par_typ_i $end
+$var wire 6 c prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 + rx_clk_i $end
+$var wire 1 " rx_data_s_i $end
+$var wire 1 , tx_clk_i $end
+$var wire 8 d tx_data_p_i [7:0] $end
+$var wire 1 0 tx_data_valid_i $end
+$var wire 1 ! tx_data_s_o $end
+$var wire 1 e tx_busy_o $end
+$var wire 1 f rx_stop_error $end
+$var wire 1 g rx_parity_error $end
+$var wire 1 # rx_data_valid_o $end
+$var wire 8 h rx_data_p_o [7:0] $end
+$scope module uart_rx_top_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 ' parity_en_i $end
+$var wire 1 ( parity_type_i $end
+$var wire 6 i prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 " rx_in_i $end
+$var wire 1 f stop_error_o $end
+$var wire 1 j start_bit $end
+$var wire 1 k shift_en $end
+$var wire 1 l sample_tick $end
+$var wire 1 m rx_sync $end
+$var wire 1 g parity_error_o $end
+$var wire 1 n parity_error $end
+$var wire 1 o parity_en $end
+$var wire 1 p parity_done $end
+$var wire 1 q parity_bit $end
+$var wire 1 r data_done $end
+$var wire 8 s data [7:0] $end
+$var wire 1 t check_en $end
+$var wire 1 u check_done $end
+$var wire 1 v abort $end
+$var reg 8 w data_o [7:0] $end
+$var reg 1 # data_valid_o $end
+$scope module data_collector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 k shift_en_i $end
+$var wire 1 l sample_tick_i $end
+$var wire 1 m rx_sync_i $end
+$var reg 3 x count [2:0] $end
+$var reg 1 r data_done_o $end
+$var reg 8 y data_o [7:0] $end
+$upscope $end
+$scope module parity_bit_collector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 l sample_tick_i $end
+$var wire 1 m rx_sync_i $end
+$var wire 1 o parity_en_i $end
+$var reg 1 q parity_bit_o $end
+$var reg 1 p parity_done_o $end
+$upscope $end
+$scope module parity_checker_inst $end
+$var wire 8 z data_i [7:0] $end
+$var wire 1 q parity_bit_i $end
+$var wire 1 n parity_error_o $end
+$var wire 1 ( parity_type_i $end
+$var wire 1 { calculated_parity $end
+$upscope $end
+$scope module rx_controller_inst $end
+$var wire 1 v abort_o $end
+$var wire 1 + clk_i $end
+$var wire 1 r data_done_i $end
+$var wire 1 p parity_done_i $end
+$var wire 1 ' parity_en_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 j start_bit_i $end
+$var wire 1 k shift_en_o $end
+$var wire 1 l sample_tick_i $end
+$var wire 1 m rx_sync_i $end
+$var wire 1 o parity_en_o $end
+$var wire 1 t check_en_o $end
+$var wire 1 u check_done_i $end
+$var reg 3 | current_state [2:0] $end
+$var reg 3 } next_state [2:0] $end
+$upscope $end
+$scope module rx_timing_counter_inst $end
+$var wire 1 v abort_i $end
+$var wire 1 + clk_i $end
+$var wire 6 ~ prescale_i [5:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 j start_bit_i $end
+$var wire 1 u frame_done_i $end
+$var reg 6 !" count [5:0] $end
+$var reg 1 "" counting $end
+$var reg 1 #" first_sample $end
+$var reg 1 l sample_tick_o $end
+$upscope $end
+$scope module start_bit_detector_inst $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 " rx_in_i $end
+$var wire 1 m rx_sync_o $end
+$var wire 1 j start_bit_o $end
+$var reg 1 $" rx_meta $end
+$var reg 1 %" rx_prev $end
+$var reg 1 &" rx_sync $end
+$upscope $end
+$scope module stop_bit_checker_inst $end
+$var wire 1 t check_en_i $end
+$var wire 1 + clk_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 m rx_sync_i $end
+$var wire 1 l sample_tick_i $end
+$var reg 1 u check_done_o $end
+$var reg 1 f stop_bit_error_o $end
+$upscope $end
+$upscope $end
+$scope module uart_tx_top_inst $end
+$var wire 1 , clk_i $end
+$var wire 8 '" data_i [7:0] $end
+$var wire 1 0 data_valid_i $end
+$var wire 1 ' par_en_i $end
+$var wire 1 ( par_typ_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 ! tx_out_o $end
+$var wire 1 (" ser_en $end
+$var wire 1 )" ser_done $end
+$var wire 1 *" ser_data $end
+$var wire 1 +" parity_bit $end
+$var wire 2 ," mux_sel [1:0] $end
+$var wire 1 e busy_o $end
+$var reg 8 -" data_reg [7:0] $end
+$scope module fsm_controller_inst $end
+$var wire 1 , clk_i $end
+$var wire 1 0 data_valid $end
+$var wire 1 ' par_en_i $end
+$var wire 1 * rst_ni $end
+$var wire 1 )" ser_done_i $end
+$var reg 1 e busy_o $end
+$var reg 2 ." mux_sel_o [1:0] $end
+$var reg 3 /" next_state [2:0] $end
+$var reg 1 (" ser_en_o $end
+$var reg 3 0" state_reg [2:0] $end
+$upscope $end
+$scope module parity_calc_inst $end
+$var wire 8 1" data_i [7:0] $end
+$var wire 1 ( parity_type $end
+$var wire 1 +" parity_o $end
+$upscope $end
+$scope module serializer_inst $end
+$var wire 1 , clk_i $end
+$var wire 8 2" data_i [7:0] $end
+$var wire 1 * rst_ni $end
+$var wire 1 )" ser_done_o $end
+$var wire 1 (" ser_en_i $end
+$var reg 1 3" active $end
+$var reg 4 4" bit_count [3:0] $end
+$var reg 1 *" data_o $end
+$var reg 8 5" data_reg [7:0] $end
+$upscope $end
+$scope module uart_mux_inst $end
+$var wire 2 6" mux_sel_i [1:0] $end
+$var wire 1 +" parity_bit_i $end
+$var wire 1 *" ser_data_i $end
+$var wire 1 ! tx_out_o $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b11 6"
+bx 5"
+b0 4"
+03"
+b0 2"
+b0 1"
+b0 0"
+b0 /"
+b11 ."
+b0 -"
+b11 ,"
+0+"
+1*"
+0)"
+0("
+b0 '"
+1&"
+1%"
+1$"
+0#"
+0""
+b0 !"
+b1000 ~
+b0 }
+b0 |
+0{
+b0 z
+b0 y
+b0 x
+b0 w
+0v
+0u
+0t
+b0 s
+0r
+0q
+0p
+0o
+0n
+1m
+0l
+0k
+0j
+b1000 i
+b0 h
+0g
+0f
+0e
+b0 d
+b1000 c
+b11 b
+bx a
+b0 `
+0_
+b0 ^
+b0 ]
+b0 \
+b0 [
+b11 Z
+b0 Y
+b11 X
+0W
+1V
+0U
+0T
+b0 S
+1R
+1Q
+1P
+0O
+0N
+b0 M
+b1000 L
+b0 K
+b0 J
+0I
+b0 H
+b0 G
+b0 F
+b0 E
+0D
+0C
+0B
+b0 A
+0@
+0?
+0>
+0=
+0<
+1;
+0:
+09
+08
+b1000 7
+b0 6
+05
+04
+03
+b0 2
+b1000 1
+00
+0/
+b0 .
+b0 -
+0,
+1+
+0*
+b1000 )
+0(
+0'
+b0 &
+b0 %
+0$
+0#
+1"
+1!
+$end
+#62
+0+
+#124
+1+
+#186
+0+
+#248
+1+
+#310
+0+
+#372
+1+
+#434
+0+
+#496
+1+
+#500
+1,
+#558
+0+
+#620
+1+
+#682
+0+
+#744
+1+
+#806
+0+
+#868
+1+
+#930
+0+
+#992
+1+
+#1000
+0,
+#1054
+0+
+#1116
+1+
+#1178
+0+
+#1240
+1+
+#1302
+0+
+#1364
+1+
+#1426
+0+
+#1488
+1+
+#1500
+1,
+#1550
+0+
+#1612
+1+
+#1674
+0+
+#1736
+1+
+#1798
+0+
+#1860
+1+
+#1922
+0+
+#1984
+1+
+#2000
+0,
+#2046
+0+
+#2108
+1+
+#2170
+0+
+#2232
+1+
+#2294
+0+
+#2356
+1+
+#2418
+0+
+#2480
+1+
+#2500
+1,
+#2542
+0+
+#2604
+1+
+#2666
+0+
+#2728
+1+
+#2790
+0+
+#2852
+1+
+#2914
+0+
+#2976
+1+
+#3000
+0,
+#3038
+0+
+#3100
+1+
+#3162
+0+
+#3224
+1+
+#3286
+0+
+#3348
+1+
+#3410
+0+
+#3472
+1+
+#3500
+1,
+#3534
+0+
+#3596
+1+
+#3658
+0+
+#3720
+1+
+#3782
+0+
+#3844
+1+
+#3906
+0+
+#3968
+1+
+#4000
+0,
+#4030
+0+
+#4092
+1+
+#4154
+0+
+#4216
+1+
+#4278
+0+
+#4340
+1+
+#4402
+0+
+#4464
+1+
+#4500
+1,
+#4526
+0+
+#4588
+1+
+#4650
+0+
+#4712
+1+
+#4774
+0+
+#4836
+1+
+#4898
+0+
+#4960
+1+
+#5000
+1("
+b1 /"
+b11 ,"
+b11 ."
+b11 6"
+1T
+b1 [
+b11 X
+b11 Z
+b11 b
+10
+1/
+b10110110 .
+b10110110 d
+b10110110 '"
+b10110110 2"
+b10100101 -
+b10100101 2
+b10100101 S
+b10100101 ^
+0,
+1*
+#5022
+0+
+#5084
+1+
+#5146
+0+
+#5208
+1+
+#5270
+0+
+#5332
+1+
+#5394
+0+
+#5456
+1+
+#5500
+0"
+0!
+13
+b0 X
+b0 Z
+b0 b
+0T
+b10 [
+1e
+b0 ,"
+b0 ."
+b0 6"
+0("
+b10 /"
+1+"
+b1 \
+1_
+b10100101 a
+b10100101 Y
+b10100101 ]
+b1 0"
+13"
+b10110110 5"
+b10110110 -"
+b10110110 1"
+1,
+#5518
+0+
+#5580
+0P
+0$"
+1+
+#5642
+0+
+#5704
+b1 }
+b1 K
+1j
+18
+0m
+0&"
+0;
+0R
+1+
+#5766
+0+
+#5828
+08
+0j
+0Q
+1O
+1N
+b1 J
+0%"
+1#"
+1""
+b1 |
+1+
+#5890
+0+
+#5952
+b1 !"
+b1 M
+1+
+#6000
+1e
+b10 /"
+13
+b10 [
+00
+0/
+0,
+#6014
+0+
+#6076
+b10 M
+b10 !"
+1+
+#6138
+0+
+#6200
+b11 !"
+b11 M
+1+
+#6262
+0+
+#6324
+b10 K
+b10 }
+0O
+b0 M
+1:
+0#"
+b0 !"
+1l
+1+
+#6386
+0+
+#6448
+1k
+b10 |
+b1 !"
+0l
+19
+b10 J
+b1 M
+0:
+1+
+#6500
+1"
+b1 ,"
+b1 ."
+b1 6"
+1e
+b10 /"
+b1 X
+b1 Z
+b1 b
+13
+b10 [
+b1 4"
+b1011011 5"
+0*"
+b10 0"
+b1 `
+b1010010 a
+b10 \
+1,
+#6510
+0+
+#6572
+b10 M
+1$"
+b10 !"
+1+
+#6634
+0+
+#6696
+b11 !"
+1m
+1&"
+b11 M
+1+
+#6758
+0+
+#6820
+b100 M
+1%"
+b100 !"
+1+
+#6882
+0+
+#6944
+b101 !"
+b101 M
+1+
+#7000
+0,
+#7006
+0+
+#7068
+b110 M
+b110 !"
+1+
+#7130
+0+
+#7192
+b111 !"
+b111 M
+1+
+#7254
+0+
+#7316
+b0 M
+1:
+b0 !"
+1l
+1+
+#7378
+0+
+#7440
+1n
+b1 x
+1{
+b10000000 s
+b10000000 y
+b10000000 z
+b1 !"
+0l
+b1 F
+b1 M
+0:
+1+
+#7500
+0"
+1!
+b10 `
+b101001 a
+0V
+b10 4"
+b101101 5"
+1*"
+1,
+#7502
+0+
+#7564
+1P
+b10 M
+0$"
+b10 !"
+1+
+#7626
+0+
+#7688
+1j
+b11 !"
+0m
+0&"
+b11 M
+1;
+1R
+1+
+#7750
+0+
+#7812
+0j
+1Q
+b100 M
+0%"
+b100 !"
+1+
+#7874
+0+
+#7936
+b101 !"
+b101 M
+1+
+#7998
+0+
+#8000
+0,
+#8060
+b110 M
+b110 !"
+1+
+#8122
+0+
+#8184
+b111 !"
+b111 M
+1+
+#8246
+0+
+#8308
+b0 M
+1:
+b0 !"
+1l
+1+
+#8370
+0+
+#8432
+1<
+b10 x
+b1000000 s
+b1000000 y
+b1000000 z
+b1 !"
+0l
+b10 F
+1I
+b10000000 A
+b10000000 G
+b10000000 H
+b1 M
+0:
+1+
+#8494
+0+
+#8500
+1"
+b11 4"
+b10110 5"
+b11 `
+b10100 a
+1V
+1,
+#8556
+b10 M
+1$"
+b10 !"
+1+
+#8618
+0+
+#8680
+b11 !"
+1m
+1&"
+b11 M
+1+
+#8742
+0+
+#8804
+b100 M
+1%"
+b100 !"
+1+
+#8866
+0+
+#8928
+b101 !"
+b101 M
+1+
+#8990
+0+
+#9000
+0,
+#9052
+b110 M
+b110 !"
+1+
+#9114
+0+
+#9176
+b111 !"
+b111 M
+1+
+#9238
+0+
+#9300
+b0 M
+1:
+b0 !"
+1l
+1+
+#9362
+0+
+#9424
+0n
+0<
+b11 x
+0{
+b10100000 s
+b10100000 y
+b10100000 z
+b1 !"
+0l
+b11 F
+0I
+b11000000 A
+b11000000 G
+b11000000 H
+b1 M
+0:
+1+
+#9486
+0+
+#9500
+0"
+0!
+b100 `
+b1010 a
+0V
+b100 4"
+b1011 5"
+0*"
+1,
+#9548
+0P
+b10 M
+0$"
+b10 !"
+1+
+#9610
+0+
+#9672
+1j
+18
+b11 !"
+0m
+0&"
+b11 M
+0;
+0R
+1+
+#9734
+0+
+#9796
+08
+0j
+0Q
+b100 M
+0%"
+b100 !"
+1+
+#9858
+0+
+#9920
+b101 !"
+b101 M
+1+
+#9982
+0+
+#10000
+0,
+#10044
+b110 M
+b110 !"
+1+
+#10106
+0+
+#10168
+b111 !"
+b111 M
+1+
+#10230
+0+
+#10292
+b0 M
+1:
+b0 !"
+1l
+1+
+#10354
+0+
+#10416
+b100 x
+b1010000 s
+b1010000 y
+b1010000 z
+b1 !"
+0l
+b100 F
+b1100000 A
+b1100000 G
+b1100000 H
+b1 M
+0:
+1+
+#10478
+0+
+#10500
+1!
+b101 4"
+b101 5"
+1*"
+b101 `
+b101 a
+1,
+#10540
+1P
+b10 M
+b10 !"
+1+
+#10602
+0+
+#10664
+b11 !"
+b11 M
+1;
+1R
+1+
+#10726
+0+
+#10788
+1Q
+b100 M
+b100 !"
+1+
+#10850
+0+
+#10912
+b101 !"
+b101 M
+1+
+#10974
+0+
+#11000
+0,
+#11036
+b110 M
+b110 !"
+1+
+#11098
+0+
+#11160
+b111 !"
+b111 M
+1+
+#11222
+0+
+#11284
+b0 M
+1:
+b0 !"
+1l
+1+
+#11346
+0+
+#11408
+1<
+b101 x
+b101000 s
+b101000 y
+b101000 z
+b1 !"
+0l
+b101 F
+1I
+b10110000 A
+b10110000 G
+b10110000 H
+b1 M
+0:
+1+
+#11470
+0+
+#11500
+1"
+b110 `
+b10 a
+1V
+b110 4"
+b10 5"
+1,
+#11532
+b10 M
+1$"
+b10 !"
+1+
+#11594
+0+
+#11656
+b11 !"
+1m
+1&"
+b11 M
+1+
+#11718
+0+
+#11780
+b100 M
+1%"
+b100 !"
+1+
+#11842
+0+
+#11904
+b101 !"
+b101 M
+1+
+#11966
+0+
+#12000
+0,
+#12028
+b110 M
+b110 !"
+1+
+#12090
+0+
+#12152
+b111 !"
+b111 M
+1+
+#12214
+0+
+#12276
+b0 M
+1:
+b0 !"
+1l
+1+
+#12338
+0+
+#12400
+1n
+0<
+b110 x
+1{
+b10010100 s
+b10010100 y
+b10010100 z
+b1 !"
+0l
+b110 F
+0I
+b11011000 A
+b11011000 G
+b11011000 H
+b1 M
+0:
+1+
+#12462
+0+
+#12500
+0!
+0"
+b111 4"
+b1 5"
+0*"
+b111 `
+b1 a
+0V
+1,
+#12524
+0P
+b10 M
+0$"
+b10 !"
+1+
+#12586
+0+
+#12648
+1j
+18
+b11 !"
+0m
+0&"
+b11 M
+0;
+0R
+1+
+#12710
+0+
+#12772
+08
+0j
+0Q
+b100 M
+0%"
+b100 !"
+1+
+#12834
+0+
+#12896
+b101 !"
+b101 M
+1+
+#12958
+0+
+#13000
+0,
+#13020
+b110 M
+b110 !"
+1+
+#13082
+0+
+#13144
+b111 !"
+b111 M
+1+
+#13206
+0+
+#13268
+b0 M
+1:
+b0 !"
+1l
+1+
+#13330
+0+
+#13392
+b111 x
+b1001010 s
+b1001010 y
+b1001010 z
+b1 !"
+0l
+b111 F
+b1101100 A
+b1101100 G
+b1101100 H
+b1 M
+0:
+1+
+#13454
+0+
+#13500
+1"
+1!
+13
+b1 X
+b1 Z
+b1 b
+b100 [
+1e
+b1 ,"
+b1 ."
+b1 6"
+b100 /"
+1U
+1)"
+b1000 `
+b0 a
+1V
+b1000 4"
+b0 5"
+1*"
+1,
+#13516
+1P
+b10 M
+1$"
+b10 !"
+1+
+#13578
+0+
+#13640
+b11 !"
+1m
+1&"
+b11 M
+1;
+1R
+1+
+#13702
+0+
+#13764
+1Q
+b100 M
+1%"
+b100 !"
+1+
+#13826
+0+
+#13888
+b101 !"
+b101 M
+1+
+#13950
+0+
+#14000
+0,
+#14012
+b110 M
+b110 !"
+1+
+#14074
+0+
+#14136
+b111 !"
+b111 M
+1+
+#14198
+0+
+#14260
+b0 M
+1:
+b0 !"
+1l
+1+
+#14322
+0+
+#14384
+0n
+1<
+b11 }
+b11 K
+1r
+b0 x
+0{
+b10100101 s
+b10100101 y
+b10100101 z
+b1 !"
+0l
+1@
+b0 F
+1I
+b10110110 A
+b10110110 G
+b10110110 H
+b1 M
+0:
+1+
+#14446
+0+
+#14500
+0)"
+1e
+b11 ,"
+b11 ."
+b11 6"
+b0 /"
+0U
+13
+b11 X
+b11 Z
+b11 b
+b0 [
+03"
+b100 0"
+0_
+b100 \
+1,
+#14508
+b10 M
+0@
+09
+1B
+b11 J
+b10 !"
+0r
+0k
+1t
+b11 |
+1+
+#14570
+0+
+#14632
+b11 !"
+b11 M
+1+
+#14694
+0+
+#14756
+b100 M
+b100 !"
+1+
+#14818
+0+
+#14880
+b101 !"
+b101 M
+1+
+#14942
+0+
+#15000
+0,
+#15004
+b110 M
+b110 !"
+1+
+#15066
+0+
+#15128
+b111 !"
+b111 M
+1+
+#15190
+0+
+#15252
+b0 M
+1:
+b0 !"
+1l
+1+
+#15314
+0+
+#15376
+b0 }
+b0 K
+1u
+b1 !"
+0l
+1C
+b1 M
+0:
+1+
+#15438
+0+
+#15500
+03
+b11 X
+b11 Z
+b11 b
+0e
+b11 ,"
+b11 ."
+b11 6"
+0N
+b0 M
+0C
+0B
+b0 J
+1$
+b10110110 &
+b10110110 6
+b10110110 E
+0""
+b0 !"
+0u
+0t
+b0 |
+1#
+b10100101 %
+b10100101 h
+b10100101 w
+b0 \
+b0 0"
+1+
+1,
+#15562
+0+
+#15624
+0#
+0$
+1+
+#15686
+0+
+#15748
+1+
+#15810
+0+
+#15872
+1+
+#15934
+0+
+#15996
+1+
+#16000
+0,
+#16058
+0+
+#16120
+1+
+#16182
+0+
+#16244
+1+
+#16306
+0+
+#16368
+1+
+#16430
+0+
+#16492
+1+
+#16500
+1,
+#16554
+0+
+#16616
+1+
+#16678
+0+
+#16740
+1+
+#16802
+0+
+#16864
+1+
+#16926
+0+
+#16988
+1+
+#17000
+0,
+#17050
+0+
+#17112
+1+
+#17174
+0+
+#17236
+1+
+#17298
+0+
+#17360
+1+
+#17422
+0+
+#17484
+1+
+#17500
+1,
+#17546
+0+
+#17608
+1+
+#17670
+0+
+#17732
+1+
+#17794
+0+
+#17856
+1+
+#17918
+0+
+#17980
+1+
+#18000
+0,
+#18042
+0+
+#18104
+1+
+#18166
+0+
+#18228
+1+
+#18290
+0+
+#18352
+1+
+#18414
+0+
+#18476
+1+
+#18500
+1,
+#18538
+0+
+#18600
+1+
+#18662
+0+
+#18724
+1+
+#18786
+0+
+#18848
+1+
+#18910
+0+
+#18972
+1+
+#19000
+0,
+#19034
+0+
+#19096
+1+
+#19158
+0+
+#19220
+1+
+#19282
+0+
+#19344
+1+
+#19406
+0+
+#19468
+1+
+#19500
+1,
+#19530
+0+
+#19592
+1+
+#19654
+0+
+#19716
+1+
+#19778
+0+
+#19840
+1+
+#19902
+0+
+#19964
+1+
+#20000
+0,
+#20026
+0+
+#20088
+1+
+#20150
+0+
+#20212
+1+
+#20274
+0+
+#20336
+1+
+#20398
+0+
+#20460
+1+
+#20500
+1,
+#20522
+0+
+#20584
+1+
+#20646
+0+
+#20708
+1+
+#20770
+0+
+#20832
+1+
+#20894
+0+
+#20956
+1+
+#21000
+0,
